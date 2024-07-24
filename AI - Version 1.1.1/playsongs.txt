@@ -1,0 +1,65 @@
+Modify the Songs Function in such a way that it prompts the user to choose between different folders for songs_directory? And make sure that it does not skip the function if user says something unexpected.
+
+
+
+        if 'play songs' in query:
+
+            video ='D:/SONGS'
+
+            audio = 'D:/NOKIA/Received'
+
+            speak("What songs should i play? Audio or Video")
+
+            ans = (TakeCommand().lower())
+
+            while(ans != 'audio' and ans != 'video'):
+
+                speak("I could not understand you. Please Try again.")
+
+                ans = (TakeCommand().lower())
+
+       
+
+            if 'audio' in ans:
+
+                    songs_dir = audio
+
+                    songs = os.listdir(songs_dir)
+
+                    print(songs)
+
+            elif 'video' in ans:
+
+                    songs_dir = video
+
+                    songs = os.listdir(songs_dir)
+
+                    print(songs)
+
+               
+
+            speak("select a random number")
+
+            rand = (TakeCommand().lower())
+
+            while('number' not in rand and rand != 'random'):
+
+                speak("I could not understand you. Please Try again.")
+
+                rand = (TakeCommand().lower())
+
+                if 'number' in rand:
+
+                    rand = int(rand.replace("number ",""))
+
+                    os.startfile(os.path.join(songs_dir,songs[rand]))
+
+                    continue            
+
+                elif 'random' in rand:
+
+                    rand = random.randint(1,219)
+
+                    os.startfile(os.path.join(songs_dir,songs[rand]))
+
+                    continue
